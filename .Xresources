@@ -1,0 +1,4 @@
+
+URxvt*background: black
+URxvt*foreground: white
+URxvt*font: xft:Monospace:size=9:antialias=true
