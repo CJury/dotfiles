@@ -20,12 +20,13 @@ function link_file() {
   local src="$1"
   local dst="$2"
 
+  local overwrite=false
+
   if [ -e "$dst" ]; then
     if $overwrite_none; then
       return
     fi
     if ! $overwrite_all; then
-      local overwrite=false
       echo "$dst already exists, overwrite?"
       select answer in "Yes" "No" "All" "None"; do
         case "$answer" in
@@ -44,13 +45,13 @@ function link_file() {
         esac
       done
     fi
-    if $overwrite; then
-      echo "overwriting $dst"
-      rm -rf "$dst"
-    fi
   fi
 
-  ln -s "$src" "$dst"
+  if $overwrite; then
+    echo "overwriting $dst"
+    rm -rf "$dst"
+    ln -s "$src" "$dst"
+  fi
 
 }
 
