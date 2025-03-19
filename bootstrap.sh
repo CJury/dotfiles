@@ -13,19 +13,9 @@ function write_config() {
     source ~/.bash_profile
 }
 
-function setup_vim() {
-    # Create symlinks
-    rm ~/.vim ~/.vimrc
-    ln -s ~/.config/.vim/.vimrc ~/.vimrc
-    ln -s ~/.config/.vim ~/.vim
-
-    # Setup YouCompleteMe
-    python3 ~/.config/.vim/pack/plugins/start/YouCompleteMe/install.py --all --system-libclang
-}
 function install() {
     write_config
 
-    setup_vim
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
